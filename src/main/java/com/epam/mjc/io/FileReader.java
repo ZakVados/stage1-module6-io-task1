@@ -16,16 +16,11 @@ public class FileReader {
             while ((ch = fileInput.read()) != -1) {
                 word += (char) ch;
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("FileNotFoundException");
         } catch (IOException e) {
-            System.out.println("IOException");
+            e.printStackTrace();
         }
 
         String[] arr = word.split("\n");
-        System.out.println("arr len = " + arr.length);
-        System.out.println("arr[0] = " + arr[0]);
-
         String name = getValueByKey(arr[0], "Name");
         profile.setName(name);
         String email = getValueByKey(arr[2], "Email");
@@ -34,7 +29,7 @@ public class FileReader {
         try {
             String age = getValueByKey(arr[1], "Age");
             profile.setAge(Integer.parseInt(age));
-            Long phone = Long.valueOf(Integer.parseInt(getValueByKey(arr[3], "Phone")));
+            Long phone = (long) Integer.parseInt(getValueByKey(arr[3], "Phone"));
             profile.setPhone(phone);
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
