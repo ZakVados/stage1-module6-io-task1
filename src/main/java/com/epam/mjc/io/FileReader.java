@@ -13,8 +13,7 @@ public class FileReader {
         String word = "";
         try (FileInputStream fileInput = new FileInputStream(file)) {
             int ch;
-            while((ch=fileInput.read()) != -1) {
-
+            while ((ch = fileInput.read()) != -1) {
                 word += (char) ch;
             }
         } catch (FileNotFoundException e) {
@@ -23,7 +22,7 @@ public class FileReader {
             System.out.println("IOException");
         }
 
-        String[] arr = word.split( "\n");
+        String[] arr = word.split("\n");
         System.out.println("arr len = " + arr.length);
         System.out.println("arr[0] = " + arr[0]);
 
